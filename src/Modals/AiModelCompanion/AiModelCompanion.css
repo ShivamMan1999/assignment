@@ -1,0 +1,298 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1a1a2e;
+    /* Dark background color */
+    overflow: hidden;
+    /* Hide overflow from background shapes */
+    position: relative;
+    /* For background shapes positioning */
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Optional: Add a subtle overlay to match the overall dark blue tone */
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+/* Background Shapes (blurred effect) - Adjusted slightly for more spread */
+.background-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    /* Allows clicks to pass through to elements below */
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    /* Slightly more blur */
+    opacity: 0.5;
+    /* Slightly less opaque */
+}
+
+.shape-1 {
+    width: 350px;
+    /* Larger */
+    height: 350px;
+    background-color: #8a2be2;
+    /* BlueViolet */
+    top: 15%;
+    /* Adjusted position */
+    left: 20%;
+    /* Adjusted position */
+}
+
+.shape-2 {
+    width: 450px;
+    /* Larger */
+    height: 450px;
+    background-color: #da70d6;
+    /* Orchid */
+    bottom: 10%;
+    /* Adjusted position */
+    right: 15%;
+    /* Adjusted position */
+}
+
+.shape-3 {
+    width: 300px;
+    /* Larger */
+    height: 300px;
+    background-color: #4682b4;
+    /* SteelBlue */
+    top: 60%;
+    /* Adjusted position */
+    left: 30%;
+    /* Adjusted position */
+    transform: translate(-50%, -50%);
+}
+
+.card-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    /* Allow more space for arrows on wider screens */
+    padding: 0 40px;
+    /* More padding to make space for arrows */
+    box-sizing: border-box;
+}
+
+.frosted-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    /* Slightly more rounded corners */
+    padding: 40px;
+    /* Increased padding */
+    text-align: center;
+    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
+    /* Stronger shadow */
+    backdrop-filter: blur(15px);
+    /* Stronger blur */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Stronger border */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Distribute space more evenly */
+    align-items: center;
+    width: 320px;
+    /* Specific width */
+    height: 420px;
+    /* Specific height */
+    position: relative;
+    z-index: 10;
+    /* Gradient overlay for the card background - Adjusted colors/opacity slightly */
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.35) 0%, rgba(218, 112, 214, 0.35) 100%);
+}
+
+.top-text {
+    font-size: 1.6em;
+    /* Slightly larger */
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 25px;
+    /* Adjust spacing */
+    text-shadow: 0 0 7px rgba(255, 255, 255, 0.6);
+}
+
+.avatar-container {
+    width: 160px;
+    /* Slightly larger avatar */
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 35px;
+    /* Adjust spacing */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    /* Stronger avatar shadow */
+    background: linear-gradient(135deg, #a052e6, #f08080);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    /* Prevent shrinking if space is tight */
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.bottom-text {
+    font-size: 2em;
+    /* Slightly larger */
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.close-button {
+    position: absolute;
+    top: 25px;
+    /* Adjusted position */
+    right: 25px;
+    /* Adjusted position */
+    color: #fff;
+    font-size: 2.2em;
+    /* Slightly larger */
+    cursor: pointer;
+    z-index: 11;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s ease-in-out;
+}
+
+.close-button:hover {
+    transform: rotate(90deg);
+}
+
+.navigation-arrow {
+    color: #fff;
+    font-size: 3em;
+    /* Larger arrows */
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 11;
+    text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    padding: 12px;
+    /* Increased padding */
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Subtle background for arrows */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.navigation-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.left-arrow {
+    left: 0;
+}
+
+.right-arrow {
+    right: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .card-wrapper {
+        max-width: 800px;
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-wrapper {
+        max-width: 600px;
+        padding: 0 20px;
+    }
+
+    .frosted-card {
+        width: 280px;
+        height: 380px;
+        padding: 30px;
+    }
+
+    .top-text {
+        font-size: 1.4em;
+    }
+
+    .bottom-text {
+        font-size: 1.8em;
+    }
+
+    .avatar-container {
+        width: 140px;
+        height: 140px;
+    }
+
+    .close-button {
+        font-size: 2em;
+        top: 15px;
+        right: 15px;
+    }
+
+    .navigation-arrow {
+        font-size: 2.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-wrapper {
+        padding: 0 10px;
+    }
+
+    .frosted-card {
+        width: 250px;
+        height: 350px;
+        padding: 25px;
+    }
+
+    .top-text {
+        font-size: 1.2em;
+    }
+
+    .bottom-text {
+        font-size: 1.6em;
+    }
+
+    .avatar-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    .navigation-arrow {
+        font-size: 2em;
+        padding: 8px;
+    }
+
+    .left-arrow {
+        left: 5px;
+    }
+
+    .right-arrow {
+        right: 5px;
+    }
+}

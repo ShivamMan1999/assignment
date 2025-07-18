@@ -1,0 +1,931 @@
+:root {
+    --dark-bg: #0C0C1C;
+    /* Slightly darker base background */
+    --card-bg-alpha: rgba(255, 255, 255, 0.06);
+    /* More transparent for general cards */
+    --card-border-alpha: rgba(255, 255, 255, 0.1);
+    /* Thinner, more subtle border */
+    --glass-blur: 18px;
+    /* Increased blur */
+    --purple-gradient-main: linear-gradient(135deg, rgba(100, 30, 150, 0.9) 0%, rgba(70, 40, 120, 0.9) 100%);
+    /* Deeper purple gradient */
+    --text-light: #E0E0E0;
+    /* Lighter text for main elements */
+    --text-medium: #A0A0A0;
+    /* Mid-tone for descriptions */
+    --text-dark: #707070;
+    /* Darker for minor details */
+    --orange-accent: #FF8C00;
+    /* Darker orange */
+    --green-accent: #32CD32;
+    /* LimeGreen example */
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--dark-bg);
+    overflow: hidden;
+    position: relative;
+}
+
+.dashboard-outer-wrapper {
+    position: relative;
+    width: 90vw;
+    max-width: 1400px;
+    /* Increased max-width for overall spaciousness */
+    height: 90vh;
+    max-height: 850px;
+    /* Increased max-height */
+    background: rgba(0, 0, 0, 0.3);
+    /* Slightly darker overall background for contrast */
+    border-radius: 25px;
+    /* More rounded corners */
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    /* Stronger overall shadow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 25px;
+    /* Increased padding inside wrapper */
+    box-sizing: border-box;
+}
+
+/* Background Lights (Blobs) */
+.background-lights {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.light-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(180px);
+    /* Even stronger blur */
+    opacity: 0.3;
+    /* Subtle opacity */
+}
+
+.blob-purple {
+    width: 500px;
+    height: 500px;
+    background-color: #8A2BE2;
+    /* BlueViolet */
+    top: 10%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+}
+
+.blob-pink {
+    width: 600px;
+    height: 600px;
+    background-color: #DA70D6;
+    /* Orchid */
+    bottom: 5%;
+    right: 15%;
+    transform: translate(50%, 50%);
+}
+
+.blob-blue {
+    width: 450px;
+    height: 450px;
+    background-color: #4682B4;
+    /* SteelBlue */
+    top: 60%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    top: 25px;
+    /* Adjusted position */
+    right: 25px;
+    /* Adjusted position */
+    color: #FFF;
+    font-size: 2.2em;
+    /* Slightly larger */
+    cursor: pointer;
+    z-index: 100;
+    /* Ensure it's on top */
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.close-button:hover {
+    opacity: 1;
+}
+
+/* Dashboard Grid Layout */
+.dashboard-grid-container {
+    display: grid;
+    /* Columns defined to roughly match the image proportions */
+    grid-template-columns: 0.9fr 1.5fr 1fr;
+     /* grid-template-columns: repeat(2, 1fr); */
+    /* Col 1 smaller, Col 2 largest, Col 3 medium */
+    /* Rows defined to roughly match the image proportions */
+    grid-template-rows: 1.1fr 1fr 1.2fr 1fr;
+    /* grid-template-rows: auto; */
+    /* Row 1 slightly taller, Row 3 taller */
+    gap: 18px;
+    /* Slightly larger gap */
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+    /* Above background blobs */
+}
+
+/* Base Card Styling (Glassmorphism) */
+.grid-card {
+    background: var(--card-bg-alpha);
+    border-radius: 18px;
+    /* More rounded corners */
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--card-border-alpha);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    /* Stronger shadow */
+    padding: 20px;
+    /* Default padding for cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: var(--text-light);
+    box-sizing: border-box;
+    overflow: hidden;
+    /* For globe and other content */
+    transition: transform 0.2s ease;
+    /* Subtle hover effect */
+}
+
+.grid-card:hover {
+    transform: translateY(-3px);
+}
+
+.card-inner-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.card-inner-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.card-inner-content2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center
+}
+
+.center-content {
+    justify-content: center;
+    align-items: center;
+}
+
+/* Common text styles */
+h3 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    color: var(--text-light);
+}
+
+h4 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: var(--text-light);
+}
+
+p {
+    font-size: 0.95em;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--text-medium);
+}
+
+.small-text {
+    font-size: 0.8em;
+    color: var(--text-dark);
+}
+
+
+/* === Individual Card Layouts and Styles === */
+
+/* Top Left: Create your own template */
+.card-create-template {
+    grid-area: 1 / 1 / 3 / 2;
+    /* Row 1-3, Col 1 */
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 25px;
+}
+
+.card-create-template h3 {
+    margin-bottom: 15px;
+}
+
+.card-create-template .trial-text {
+    color: var(--text-medium);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.card-create-template .price-text {
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+
+/* Main Top Center: Template Ai */
+.card-template-ai {
+    grid-area: 1 / 2 / 3 / 3;
+    /* Row 1-3, Col 2 */
+    background: var(--purple-gradient-main);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 25px;
+    position: relative;
+    overflow: hidden;
+    /* Hide overflowing globe */
+}
+
+.template-ai-header {
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #FFF;
+    width: 100%;
+    text-align: center;
+}
+
+.template-ai-placeholder-square {
+    width: 80px;
+    /* Larger square */
+    height: 80px;
+    background-color: #CCC;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.template-ai-globe-container {
+    position: absolute;
+    bottom: -80px;
+    /* Adjust to half-hide the globe */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    /* Larger globe */
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(138, 43, 226, 0.9);
+    /* Stronger globe glow */
+}
+
+.ai-globe-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    animation: pulse-glow 2s infinite alternate;
+    /* Simple glow animation */
+}
+
+@keyframes pulse-glow {
+    from {
+        box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+    }
+
+    to {
+        box-shadow: 0 0 40px rgba(138, 43, 226, 0.9);
+    }
+}
+
+
+/* Top Right: Toggle/Slider Card */
+.card-toggle-switch {
+    grid-area: 1 / 3 / 2 / 4;
+    /* Row 1, Col 3 */
+    background: var(--purple-gradient-main);
+    /* Match main card gradient */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 15px;
+}
+
+.toggle-control {
+    width: 70px;
+    /* Wider switch */
+    height: 35px;
+    /* Taller switch */
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 17.5px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-indicator {
+    width: 30px;
+    /* Larger indicator */
+    height: 30px;
+    background-color: var(--orange-accent);
+    /* Orange color */
+    border-radius: 50%;
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* For active state: .toggle-control.active .toggle-indicator { transform: translateX(35px); } */
+
+
+/* Mid Right: 25M created prompts */
+.card-prompts-count {
+    grid-area: 2 / 3 / 3 / 4;
+    /* Row 2, Col 3 */
+    justify-content: center;
+    align-items: center;
+}
+
+.prompts-count-card .count-number {
+    color: var(--orange-accent);
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 2.8em;
+}
+
+/* Larger, orange */
+.prompts-count-card .count-label {
+    text-align: center;
+    color: var(--text-medium);
+    font-size: 0.9em;
+}
+
+
+/* Mid Left: 20 Top Users */
+.card-top-users {
+    grid-area: 3 / 1 / 4 / 2;
+    /* Row 3, Col 1 */
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 25px;
+}
+
+.users-count {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--orange-accent);
+}
+
+.users-label {
+    font-size: 0.9em;
+    color: var(--text-medium);
+    margin-bottom: 15px;
+}
+
+.avatar-stack {
+    display: flex;
+    margin-top: 10px;
+}
+
+.user-avatar {
+    width: 100px;
+    /* Larger avatars */
+    height: 40px;
+    border-radius: 10%;
+    /* border: 3px solid var(--dark-bg); */
+    /* Thicker border */
+    margin-left: -15px;
+    /* More overlap */
+    object-fit: cover;
+    /* background-color: var(--card-bg-alpha); */
+    /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); */
+}
+
+.user-avatar:first-child {
+    margin-left: 0;
+}
+
+/* Mid Right Bottom: Prompt Service */
+.card-prompt-service {
+    grid-area: 3 / 3 / 5 / 4;
+    /* Row 3-5, Col 3 */
+    justify-content: flex-start;
+    padding: 25px;
+}
+
+.service-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-light);
+}
+
+.service-description {
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+
+.title-gradient {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600; /* SemiBold */
+  font-size: 62px;
+  line-height: 56px;
+  letter-spacing: -2%;
+  text-align: center;
+  background: linear-gradient(90deg, #6633EE, #F5F1FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.service-options {
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 10px; */
+    /* Slightly larger gap */
+}
+
+.option-pill {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    /* More rounded */
+    padding: 8px 15px;
+    /* More padding */
+    font-size: 0.8em;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Gap between icon and text */
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Subtle border */
+}
+
+.option-pill:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.option-pill i {
+    font-size: 0.9em;
+    color: var(--text-medium);
+}
+
+/* Specific color for the Rewrite pill, as seen in image */
+.option-pill:first-child {
+    /* This targets the 'Rewrite' pill */
+    background: linear-gradient(90deg, #9370DB, #87CEEB);
+    /* Match image's gradient */
+    color: #fff;
+    border: none;
+}
+
+.option-pill:first-child i {
+    color: #fff;
+}
+
+
+/* Bottom Left: Generate Button */
+.card-generate-button {
+    grid-area: 4 / 2 / 5 / 1;
+    /* Row 4, Col 1 */
+    justify-content: start;
+    align-items: center;
+    padding: 15px;
+    /* Keep some padding for spacing */
+    background: none;
+    /* Make this card transparent for just the button */
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.generate-btn {
+    background: linear-gradient(90deg, #8A2BE2, #DA70D6);
+    /* Purple to Pink gradient */
+    color: #FFF;
+    padding: 15px 30px;
+    /* Larger button */
+    border: none;
+    border-radius: 12px;
+    /* More rounded */
+    font-size: 1.2em;
+    /* Larger font */
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    /* Stronger shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.generate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+.generate-btn i {
+    font-size: 1.1em;
+}
+
+
+/* Bottom Left Mid: Branching paths */
+.card-branching-paths {
+    grid-area:4 / 3 / 2 / 2;
+    /* Row 3, Col 2 */
+
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 25px;
+}
+
+/* Bottom Center: AI Journey */
+.card-ai-journey {
+       grid-area:4/ 2 / 2/ 2;;
+    /* Row 4, Col 2 */
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 25px;
+}
+
+
+
+
+/*  */
+/* Common styles for small cards with icons */
+.card-small-icon-circle {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    width: 50px;
+    /* Larger circle */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    /* More spacing */
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card-small-icon-circle i {
+    color: var(--orange-accent);
+    /* Orange for these icons */
+    font-size: 1.3em;
+}
+
+.card-small-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-light);
+}
+
+.card-small-description {
+    font-size: 0.85em;
+    color: var(--text-dark);
+}
+
+.cards-50-percent-wrapper {
+    display: flex; /* Use flexbox to arrange children */
+    flex-direction: row; /* Default to column for small screens */
+    gap: 30px; /* Space between the two cards */
+    width: 100%; /* Take full available width */
+    max-width: 700px; /* Example max width for the pair of cards */
+
+    /* Responsive: On screens wider than 768px, make them a row */
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+}
+
+
+
+/* === Responsive Adjustments === */
+@media (max-width: 1200px) {
+    .dashboard-grid-container {
+        grid-template-columns: 1fr 1.5fr 1fr;
+        /* Slightly less distinction */
+        grid-template-rows: auto;
+        /* Allow rows to size content */
+    }
+
+    /* Reorder for better flow on slightly smaller screens, maintaining 3 columns */
+    .card-create-template {
+        order: 1;
+    }
+
+    .card-template-ai {
+        order: 2;
+    }
+
+    .card-toggle-switch {
+        order: 3;
+    }
+
+    .card-prompts-count {
+        order: 4;
+    }
+
+    .card-top-users {
+        order: 5;
+    }
+
+    .card-prompt-service {
+        order: 6;
+    }
+
+    .card-generate-button {
+        order: 7;
+    }
+
+    .card-branching-paths {
+        order: 8;
+    }
+
+    .card-ai-journey {
+        order: 9;
+    }
+}
+
+@media (max-width: 900px) {
+    .dashboard-outer-wrapper {
+        padding: 15px;
+        width: 95vw;
+        height: auto;
+        /* Allow height to expand */
+        max-height: unset;
+    }
+
+    .dashboard-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* Two columns */
+        grid-template-rows: auto;
+        gap: 15px;
+    }
+
+    /* Adjust specific card spans for 2 columns */
+    .card-create-template {
+        grid-area: auto;
+        order: 1;
+    }
+
+    .card-template-ai {
+        grid-area: 1 / 1 / 2 / 3;
+        order: 2;
+    }
+
+    /* Main card spans 2 columns */
+    .card-toggle-switch {
+        grid-area: auto;
+        order: 3;
+    }
+
+    .card-prompts-count {
+        grid-area: auto;
+        order: 4;
+    }
+
+    .card-top-users {
+        grid-area: auto;
+        order: 5;
+    }
+
+    .card-prompt-service {
+        grid-area: auto;
+        order: 6;
+    }
+
+    .card-branching-paths {
+        grid-area: auto;
+        order: 7;
+    }
+
+    .card-ai-journey {
+        grid-area: auto;
+        order: 8;
+    }
+
+    .card-generate-button {
+        grid-area: auto;
+        order: 9;
+    }
+
+    .template-ai-header {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .template-ai-placeholder-square {
+        width: 60px;
+        height: 60px;
+    }
+
+    .template-ai-globe-container {
+        width: 180px;
+        height: 180px;
+        bottom: -60px;
+    }
+
+    .user-avatar {
+        width: 35px;
+        height: 35px;
+        margin-left: -12px;
+    }
+
+    .generate-btn {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
+
+    .card-small-icon-circle {
+        width: 45px;
+        height: 45px;
+    }
+
+    .card-small-icon-circle i {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard-outer-wrapper {
+        border-radius: 15px;
+        padding: 10px;
+    }
+
+    .close-button {
+        font-size: 1.8em;
+        top: 10px;
+        right: 10px;
+    }
+
+    .dashboard-grid-container {
+        grid-template-columns: 1fr;
+        /* Single column */
+        grid-template-rows: auto;
+        gap: 10px;
+    }
+
+    /* Reset all grid areas to auto for single column stacking */
+    .grid-card {
+        grid-area: auto !important;
+    }
+
+    .card-template-ai {
+        order: 1;
+    }
+
+    .card-create-template {
+        order: 2;
+    }
+
+    .card-toggle-switch {
+        order: 3;
+    }
+
+    .card-prompts-count {
+        order: 4;
+    }
+
+    .card-top-users {
+        order: 5;
+    }
+
+    .card-prompt-service {
+        order: 6;
+    }
+
+    .card-branching-paths {
+        order: 7;
+    }
+
+    .card-ai-journey {
+        order: 8;
+    }
+
+    .card-generate-button {
+        order: 9;
+    }
+
+
+    .grid-card {
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+
+    h4 {
+        font-size: 2em;
+    }
+
+    p,
+    .small-text {
+        font-size: 0.8em;
+    }
+
+    .template-ai-header {
+        font-size: 1.6em;
+        margin-bottom: 15px;
+    }
+
+    .template-ai-placeholder-square {
+        width: 50px;
+        height: 50px;
+    }
+
+    .template-ai-globe-container {
+        width: 150px;
+        height: 150px;
+        bottom: -50px;
+    }
+
+    .toggle-control {
+        width: 50px;
+        height: 25px;
+    }
+
+    .toggle-indicator {
+        width: 21px;
+        height: 21px;
+    }
+
+    .user-avatar {
+        width: 30px;
+        height: 30px;
+        margin-left: -10px;
+    }
+
+    .option-pill {
+        padding: 6px 12px;
+        font-size: 0.75em;
+    }
+
+    .card-small-icon-circle {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 15px;
+    }
+
+    .card-small-icon-circle i {
+        font-size: 1em;
+    }
+
+    .card-small-title {
+        font-size: 1.1em;
+    }
+
+    .card-small-description {
+        font-size: 0.75em;
+    }
+
+    .generate-btn {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+}

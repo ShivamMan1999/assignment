@@ -1,0 +1,406 @@
+.main-wrapper {
+    position: relative;
+    width: 90vw;
+    /* Responsive width */
+    max-width: 1200px;
+    /* Max width for larger screens */
+    height: 90vh;
+    /* Responsive height */
+    max-height: 700px;
+    /* Max height for larger screens */
+    background: rgba(0, 0, 0, 0.2);
+    /* Slightly transparent wrapper background */
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Ensure background effects stay within wrapper */
+}
+
+/* Background Effects (blurred shapes) - Reused from previous design */
+.background-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.4;
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    background-color: #8a2be2;
+    /* BlueViolet */
+    top: 10%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+}
+
+.shape-2 {
+    width: 500px;
+    height: 500px;
+    background-color: #da70d6;
+    /* Orchid */
+    bottom: 5%;
+    right: 20%;
+    transform: translate(50%, 50%);
+}
+
+.shape-3 {
+    width: 350px;
+    height: 350px;
+    background-color: #4682b4;
+    /* SteelBlue */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Close Button - Reused from previous design */
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.close-button:hover {
+    opacity: 1;
+}
+
+/* Card Display Container */
+.card-display-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Navigation Arrows - Reused from previous design */
+.navigation-arrow {
+    color: #fff;
+    font-size: 2.5em;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    padding: 10px;
+}
+
+.navigation-arrow:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.left-arrow {
+    left: 20px;
+}
+
+.right-arrow {
+    right: 20px;
+}
+
+/* Main Card Wrapper (holds top elements and main card) */
+.main-card-wrapper {
+    position: relative;
+    z-index: 2;
+    /* Ensures it's above blurred cards */
+}
+
+/* Top Elements (Icon and Placeholder) */
+.card-top-elements {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: -30px;
+    /* Adjust this to move elements up from card top */
+    left: 20px;
+    /* Adjust horizontal position */
+    z-index: 3;
+    /* Above main card */
+}
+
+.card-icon-container {
+    background-color: #f7931a;
+    /* Orange color from image */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card-icon-container i {
+    color: #fff;
+    font-size: 1.5em;
+}
+
+.icon-line {
+    width: 30px;
+    /* Length of the line */
+    height: 2px;
+    background-color: #f7931a;
+    /* Orange line */
+    margin-left: -5px;
+    /* Overlap with icon container */
+}
+
+.card-square-placeholder {
+    width: 70px;
+    /* Size of the square */
+    height: 70px;
+    background-color: #ccc;
+    /* Grey color from image */
+    border-radius: 8px;
+    /* Slightly rounded corners */
+    margin-left: 20px;
+    /* Space between line and square */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Main Card Styling */
+.main-card {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.8) 0%, rgba(100, 149, 237, 0.8) 100%);
+    /* Purple-blue gradient */
+    border-radius: 15px;
+    padding: 80px 40px 40px 40px;
+    /* Adjust padding to make space for top elements */
+    width: 400px;
+    /* Fixed width for the main card */
+    height: 280px;
+    /* Fixed height for the main card */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+    align-items: flex-start;
+    /* Align content to the left */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    /* Stronger shadow */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    text-align: left;
+}
+
+.card-title-line1 {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-title-line2 {
+    font-size: 2.2em;
+    /* Larger for "Prompts templates" */
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.card-description {
+    font-size: 0.95em;
+    line-height: 1.5;
+    opacity: 0.85;
+}
+
+/* Blurred Cards (for background context) */
+.blurred-card-left,
+.blurred-card-right {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    /* Slightly smaller than main card */
+    height: 250px;
+    opacity: 0.5;
+    z-index: 1;
+    /* Below the main card */
+}
+
+.blurred-card-left {
+    left: 10%;
+    transform: translateX(-50%) scale(0.9);
+}
+
+.blurred-card-right {
+    right: 10%;
+    transform: translateX(50%) scale(0.9);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .main-card {
+        width: 350px;
+        height: 260px;
+        padding: 70px 30px 30px 30px;
+    }
+
+    .card-top-elements {
+        top: -25px;
+        left: 15px;
+    }
+
+    .card-icon-container {
+        width: 45px;
+        height: 45px;
+    }
+
+    .card-icon-container i {
+        font-size: 1.3em;
+    }
+
+    .icon-line {
+        width: 25px;
+    }
+
+    .card-square-placeholder {
+        width: 60px;
+        height: 60px;
+        margin-left: 15px;
+    }
+
+    .card-title-line1 {
+        font-size: 1.6em;
+    }
+
+    .card-title-line2 {
+        font-size: 2em;
+    }
+
+    .card-description {
+        font-size: 0.9em;
+    }
+
+    .blurred-card-left {
+        left: 5%;
+    }
+
+    .blurred-card-right {
+        right: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-wrapper {
+        width: 95vw;
+        height: 95vh;
+        border-radius: 15px;
+    }
+
+    .close-button {
+        font-size: 1.8em;
+        top: 15px;
+        right: 15px;
+    }
+
+    .navigation-arrow {
+        font-size: 2em;
+        left: 10px;
+        right: 10px;
+    }
+
+    .main-card {
+        width: 300px;
+        height: 240px;
+        padding: 60px 25px 25px 25px;
+    }
+
+    .card-top-elements {
+        top: -20px;
+        left: 10px;
+    }
+
+    .card-icon-container {
+        width: 40px;
+        height: 40px;
+    }
+
+    .card-icon-container i {
+        font-size: 1.2em;
+    }
+
+    .icon-line {
+        width: 20px;
+    }
+
+    .card-square-placeholder {
+        width: 50px;
+        height: 50px;
+        margin-left: 10px;
+    }
+
+    .card-title-line1 {
+        font-size: 1.4em;
+    }
+
+    .card-title-line2 {
+        font-size: 1.8em;
+    }
+
+    .card-description {
+        font-size: 0.85em;
+    }
+
+    .blurred-card-left,
+    .blurred-card-right {
+        width: 280px;
+        height: 220px;
+        opacity: 0;
+        /* Hide blurred cards on very small screens for simplicity */
+        pointer-events: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .main-card {
+        width: 280px;
+        height: 220px;
+        padding: 50px 20px 20px 20px;
+    }
+
+    .card-title-line1 {
+        font-size: 1.2em;
+    }
+
+    .card-title-line2 {
+        font-size: 1.6em;
+    }
+
+    .card-description {
+        font-size: 0.8em;
+    }
+
+    .navigation-arrow {
+        font-size: 1.8em;
+    }
+}

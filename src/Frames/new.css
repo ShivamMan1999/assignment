@@ -1,0 +1,394 @@
+/* General Body and Container Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0d0d1e; /* Dark background similar to image */
+  color: #fff;
+  overflow-x: hidden; /* Prevent horizontal scroll from blobs */
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-outer-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding: 20px;
+  overflow: hidden; /* Ensure blobs don't overflow */
+}
+
+.dashboard-grid-container {
+  max-width: 1400px; /* Adjust max-width as needed */
+  margin: auto;
+  position: relative;
+  z-index: 10; /* Ensure grid is above background lights */
+}
+
+/* Background Lights */
+.background-lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.light-blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  filter: blur(80px); /* Increased blur for a softer glow */
+  animation: floatLight 15s ease-in-out infinite alternate;
+}
+
+.blob-purple {
+  background: linear-gradient(135deg, #a737ff, #6d00e7);
+  width: 350px;
+  height: 350px;
+  top: 10%;
+  left: -5%;
+  animation-delay: 0s;
+}
+
+.blob-pink {
+  background: linear-gradient(135deg, #ff007b, #e7006d);
+  width: 400px;
+  height: 400px;
+  top: 60%;
+  right: -10%;
+  animation-delay: 2s;
+}
+
+.blob-blue {
+  background: linear-gradient(135deg, #00c2ff, #007be7);
+  width: 300px;
+  height: 300px;
+  top: 30%;
+  left: 30%;
+  animation-delay: 4s;
+}
+
+@keyframes floatLight {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -20px) scale(1.05);
+  }
+  50% {
+    transform: translate(0, 20px) scale(1);
+  }
+  75% {
+    transform: translate(-20px, -10px) scale(0.95);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 20;
+  font-size: 1.5rem;
+  color: #aaa;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.close-button:hover {
+  color: #fff;
+}
+
+/* Grid Card Base Styles */
+.grid-card {
+  background-color: rgba(30, 0, 60, 0.6); /* Dark translucent background for cards */
+  border: 1px solid rgba(100, 0, 150, 0.3); /* Soft border */
+  border-radius: 15px;
+  backdrop-filter: blur(5px); /* Optional: slight blur effect */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Glassmorphism shadow */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  overflow: hidden; /* Ensure content stays within rounded corners */
+}
+
+.grid-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+}
+
+.grid-card .card-body {
+  padding: 25px;
+  color: #e0e0e0;
+}
+
+/* Card: Create your own template */
+.card-create-template {
+  background: linear-gradient(
+    135deg,
+    rgba(50, 0, 100, 0.7),
+    rgba(20, 0, 40, 0.7)
+  );
+  border-color: rgba(150, 50, 250, 0.4);
+}
+.card-create-template h3 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #fff;
+  font-weight: 600;
+}
+.card-create-template .trial-text {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-bottom: 5px;
+}
+.card-create-template .price-text {
+  font-size: 1.1rem;
+  color: #a737ff; /* Purple accent */
+  font-weight: 500;
+}
+
+/* Card: Template Ai */
+.card-template-ai {
+  background: linear-gradient(
+    135deg,
+    rgba(60, 0, 120, 0.7),
+    rgba(30, 0, 60, 0.7)
+  );
+  border-color: rgba(180, 50, 250, 0.4);
+  position: relative; /* For globe positioning */
+  text-align: center;
+}
+.template-ai-header {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.template-ai-placeholder-square {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin: 0 auto 20px auto;
+}
+.template-ai-globe-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto; /* Pushes it to the bottom */
+}
+.ai-globe-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  /* If you have a custom glowing sphere, you'd place it here */
+  /* For demonstration, using a placeholder, ideally, this would be a complex image/animation */
+}
+
+/* Card: Toggle Switch */
+.card-toggle-switch {
+  background: rgba(40, 0, 80, 0.7);
+  border-color: rgba(120, 0, 200, 0.4);
+}
+.toggle-control {
+  width: 80px;
+  height: 40px;
+  background-color: #444;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.toggle-indicator {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #a737ff, #6d00e7);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+.toggle-control.active {
+  background-color: #6d00e7; /* Active state background */
+}
+.toggle-control.active .toggle-indicator {
+  transform: translateX(40px); /* Move to right for active state */
+  background: linear-gradient(135deg, #ff007b, #e7006d); /* Pink for active */
+}
+
+/* Card: Prompts Count */
+.card-prompts-count {
+  background: rgba(40, 0, 80, 0.7);
+  border-color: rgba(120, 0, 200, 0.4);
+}
+.count-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #00c2ff; /* Blue accent */
+  line-height: 1;
+}
+.count-label {
+  font-size: 0.9rem;
+  color: #bbb;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Card: Top Users */
+.card-top-users {
+  background: rgba(40, 0, 80, 0.7);
+  border-color: rgba(120, 0, 200, 0.4);
+}
+.users-count {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ff007b; /* Pink accent */
+  line-height: 1;
+  display: block; /* To put label on new line */
+  margin-bottom: 5px;
+}
+.users-label {
+  font-size: 0.9rem;
+  color: #bbb;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+.avatar-stack .user-avatar {
+  width: 40px; /* Slightly larger avatars */
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  object-fit: cover;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.avatar-stack .user-avatar:not(:first-child) {
+  margin-left: -10px; /* Overlap avatars */
+}
+
+/* Card: Prompt Service */
+.card-prompt-service {
+  background: rgba(40, 0, 80, 0.7);
+  border-color: rgba(120, 0, 200, 0.4);
+}
+.service-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.service-description {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-bottom: 15px;
+}
+.option-pill {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-size: 0.85rem;
+  color: #ddd;
+  margin-right: 8px; /* Spacing between pills */
+  margin-bottom: 8px; /* Spacing for wrapping pills */
+  white-space: nowrap; /* Prevent breaking within pill */
+  transition: background-color 0.2s ease;
+}
+.option-pill:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.option-pill i {
+  font-size: 0.7em; /* Smaller icon */
+  color: #a737ff; /* Purple for icon */
+  margin-right: 5px;
+}
+
+/* Card: Generate Button */
+.card-generate-button {
+  background: rgba(40, 0, 80, 0.7);
+  border-color: rgba(120, 0, 200, 0.4);
+}
+.generate-btn {
+  background: linear-gradient(135deg, #a737ff, #6d00e7);
+  border: none;
+  border-radius: 10px;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+.generate-btn:hover {
+  background: linear-gradient(135deg, #be6aff, #8a2ae0);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+.generate-btn i {
+  margin-right: 10px;
+  font-size: 1.3em;
+}
+
+/* Small Cards (Branching paths, Ai journey) */
+.card-branching-paths,
+.card-ai-journey {
+  background: rgba(40, 0, 80, 0.7);
+  border-color: rgba(120, 0, 200, 0.4);
+}
+.card-small-icon-circle {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #a737ff, #6d00e7); /* Purple gradient */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+.card-small-icon-circle i {
+  font-size: 1.5rem;
+  color: #fff;
+}
+.card-small-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 5px;
+}
+.card-small-description {
+  font-size: 0.85rem;
+  color: #bbb;
+  line-height: 1.4;
+}
+
+/* Adjustments for smaller screens if needed (Bootstrap handles most of it) */
+@media (max-width: 767.98px) {
+  .dashboard-grid-container {
+    padding: 0 15px; /* Add some padding on very small screens */
+  }
+  .grid-card .card-body {
+    padding: 20px;
+  }
+  .template-ai-header {
+    font-size: 1.5rem;
+  }
+  .users-count {
+    font-size: 2rem;
+  }
+  .count-number {
+    font-size: 2.5rem;
+  }
+  .generate-btn {
+    font-size: 1rem;
+    padding: 12px 25px;
+  }
+}
